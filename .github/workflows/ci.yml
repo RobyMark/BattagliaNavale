@@ -14,7 +14,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-2024:20221027-01
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
