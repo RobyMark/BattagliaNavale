@@ -14,9 +14,14 @@ class AI:
             for j in range(grid.width):
                 availableMoves.append(Pair(i, j))
     
-    #note: ships is an array of int which contains the lenght of each ship
-    def placeShips(grid, ships) --> None:
-        #TODO
+    #note: shipsLength is an array of int which contains the lenght of each ship
+    def placeShips(grid, shipsLength, attempts=50) --> None:
+        for shipLength in shipsLength:
+            outcome = "fail"
+            i = 0
+            while outcome == "fail" and i<attempts
+                outcome = grid.tryAddShip(randint(0, height-1), randint(0, width-1), shipLength, random.choice(["n", "s", "w", "e"]))
+                i+=1
 
     def makeMove(grid) --> None:
         if lastOutcome == "miss" or lastOutcome == "sunk":
