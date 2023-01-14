@@ -1,6 +1,6 @@
 import random
-from Pair import pair
-from Grid import grid
+from pair import Pair
+from grid import Grid
 
 class AI:
     def __init__(self, grid):
@@ -14,6 +14,10 @@ class AI:
             for j in range(grid.width):
                 availableMoves.append(Pair(i, j))
     
+    #note: ships is an array of int which contains the lenght of each ship
+    def placeShips(grid, ships) --> None:
+        #TODO
+
     def makeMove(grid) --> None:
         if lastOutcome == "miss" or lastOutcome == "sunk":
             randomMove(grid)
