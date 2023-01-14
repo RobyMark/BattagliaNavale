@@ -86,4 +86,16 @@ class Grid:
             #TODO
 
         def move(x, y) --> str:
-            #TODO
+            if cells[x][y]=="ship":
+                for ship in ships:
+                    for i in range(0, len(ship))
+                        if ship[i].x=x and ship[i].y=y:
+                            cells[x][y]="hit"
+                            del ship[i]
+                            if len(ship)==0:
+                                return "sunk"
+                            else:
+                                return "hit"
+            else:
+                cells[i][j]="miss"
+                return "miss"
