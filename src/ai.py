@@ -1,6 +1,6 @@
 import random
-from src.pair import Pair
-from src.grid import Grid
+from pair import Pair
+from grid import Grid
 
 class AI:
     def __init__(self, grid):
