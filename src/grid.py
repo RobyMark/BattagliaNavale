@@ -37,7 +37,7 @@ class Grid:
             if direction == "vertical":
                 for i in range(start, end):
                     if self.cells[i][z]=="ship":
-                        return
+                        return "false"
             else:
                 for i in range(start, end):
                     if self.cells[z][i]=="ship":
@@ -70,13 +70,13 @@ class Grid:
             for i in range(0, height):
                 print(i+" ")
                 for j in range(0, width):
-                    if cells[i][j]=="empty":
+                    if self.cells[i][j]=="empty":
                         print("O")
-                    elif cells[i][j]=="hit":
+                    elif self.cells[i][j]=="hit":
                         print("X")
-                    elif cells[i][j]=="ship":
+                    elif self.cells[i][j]=="ship":
                         print("B")
-                    elif cells[i][j]=="miss":
+                    elif self.cells[i][j]=="miss":
                         print("M")
                     print(" ")
                 print("\n")

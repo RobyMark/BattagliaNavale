@@ -50,7 +50,7 @@ class AI:
             lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)
             self.removeLastMove()
         else:
-            self.randomMove()
+            self.randomMove(grid)
 
     def removeLastMove(self) -> None:
         for i in range(0, len(self.availableMoves)):
