@@ -36,18 +36,18 @@ class Grid:
         def areCellsFree(direction, z, start, end) -> str:
             if direction == "vertical":
                 for i in range(start, end):
-                    if cells[i][z]=="ship"
+                    if cells[i][z]=="ship":
                         return
             else:
                 for i in range(start, end):
-                    if cells[z][i]=="ship"
+                    if cells[z][i]=="ship":
                         return "false"
             return "true"
 
 
         def addShip(pos, length, orientation) -> None:
             ship = []
-            for k in range(0, length)
+            for k in range(0, length):
                 if orientation=="n":
                     cells[pos.x-k][pos.y]="ship"
                     ship.append(Pair(pos.x-k, pos.y))
@@ -70,13 +70,13 @@ class Grid:
             for i in range(0, height):
                 print(i+" ")
                 for j in range(0, width):
-                    if cells[i][j]=="empty"
+                    if cells[i][j]=="empty":
                         print("O")
-                    elif cells[i][j]=="hit"
+                    elif cells[i][j]=="hit":
                         print("X")
-                    elif cells[i][j]=="ship"
+                    elif cells[i][j]=="ship":
                         print("B")
-                    elif cells[i][j]=="miss"
+                    elif cells[i][j]=="miss":
                         print("M")
                     print(" ")
                 print("\n")
@@ -88,7 +88,7 @@ class Grid:
         def move(x, y) -> str:
             if cells[x][y]=="ship":
                 for ship in ships:
-                    for i in range(0, len(ship))
+                    for i in range(0, len(ship)):
                         if ship[i].x=x and ship[i].y=y:
                             cells[x][y]="hit"
                             del ship[i]

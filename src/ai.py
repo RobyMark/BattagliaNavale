@@ -4,7 +4,7 @@ from grid import Grid
 
 class AI:
     def __init__(self, grid):
-        pair lastMove = null
+        #pair lastMove = null
         str lastOutcome = "miss"
         availableMoves=[]
         initAvailableMoves(grid)
