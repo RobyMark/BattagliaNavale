@@ -44,11 +44,11 @@ def test_Grid() -> None:
     assert grid.ships[0][1].x==1
     assert grid.ships[0][1].y==1
     assert grid.cells[0][1] == "ship"
-    assert grid.cells[0][3] == "ship"
+    assert grid.cells[0][3] == "empty"
     assert grid.cells[3][0] == "ship"
 
     assert grid.move(0, 0) == "miss"
-    assert grid.move(0, 1) == "hit"
-    assert grid.move(0, 2) == "hit"
-    assert grid.move(0, 3) == "sunk"
+    assert grid.move(1, 0) == "hit"
+    assert grid.move(2, 0) == "hit"
+    assert grid.move(3, 0) == "sunk"
     
