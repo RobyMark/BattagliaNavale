@@ -3,8 +3,8 @@ class Pair:
         self.x=x
         self.y=y
 
-    def getX() -> int:
-        return x
+    def getX(self) -> int:
+        return self.x
 
-    def getY() -> int:
-        return y
+    def getY(self) -> int:
+        return self.y

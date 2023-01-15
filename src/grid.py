@@ -5,12 +5,12 @@ class Grid:
     def __init__(self, height, width):
         self.height = height
         self.width = width
-        cells = []
+        self.cells = []
         for i in range(grid.height):
-            cells[i] = []
+            self.cells[i] = []
             for j in range(grid.width):
-                cells[i][j] = "empty"
-        ships = []
+                self.cells[i][j] = "empty"
+        self.ships = []
 
         def tryAddShip(pos, length, orientation) -> str:
             canBePlaced = "true"
