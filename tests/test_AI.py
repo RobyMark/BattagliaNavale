@@ -4,7 +4,7 @@ from src.ai import AI
 from pytest_mock import MockerFixture
 import random
 
-def test_AI(mocker: MockerFixture) -> None:
+def test_availableMoves() -> None:
     grid = Grid(4, 4)
     ai = AI(grid)
     assert ai.availableMoves[0].x==0
@@ -16,7 +16,7 @@ def test_AI(mocker: MockerFixture) -> None:
     assert ai.availableMoves[15].x==3
     assert ai.availableMoves[15].y==3
 
-    #placeShips
+def test_placeShips(mocker: MockerFixture) -> None:
     grid = Grid(4, 4)
     ai = AI(grid)
     mocker.patch.object(grid, "tryAddShip", return_value="success")
@@ -24,7 +24,7 @@ def test_AI(mocker: MockerFixture) -> None:
     ai.placeShips(grid, [3, 2, 2])
     assert spy.call_count == 3
 
-    #makeMove
+def test_makeMove(mocker: MockerFixture) -> None:
     grid = Grid(4, 4)
     ai = AI(grid)
     spy = mocker.spy(ai, "randomMove")
@@ -38,7 +38,7 @@ def test_AI(mocker: MockerFixture) -> None:
     ai.makeMove(grid)
     assert spy.call_count == 1
 
-    #randomMove
+def test_randomMove(mocker: MockerFixture) -> None:
     grid = Grid(4, 4)
     ai = AI(grid)
     mock_rand = 1
@@ -48,14 +48,14 @@ def test_AI(mocker: MockerFixture) -> None:
     assert ai.lastMove.y == 1
     assert len(ai.availableMoves) == 15
 
-    #removeLastMove
+def test_removeLastMove() -> None:
     grid = Grid(4, 4)
     ai = AI(grid)
     ai.lastMove = Pair(1, 2)
     ai.removeLastMove()
     assert len(ai.availableMoves) == 15
 
-    #checkNeighbours
+def test_checkNeighbours(mocker: MockerFixture) -> None:
     grid = Grid(4, 4)
     ai = AI(grid)
     grid.cells[2][2]="hit"
@@ -94,4 +94,14 @@ def test_AI(mocker: MockerFixture) -> None:
     assert ai.lastMove.x == 2
     assert ai.lastMove.y == 3
 
-
+    grid = Grid(4, 4)
+    ai = AI(grid)
+    grid.cells[2][2]="hit"
+    grid.cells[1][2]="hit"
+    grid.cells[3][2]="hit"
+    grid.cells[2][1]="hit"
+    grid.cells[2][3]="hit"
+    ai.lastMove=Pair(2, 2)
+    spy = mocker.spy(ai, "randomMove")
+    ai.checkNeighbours(grid)
+    assert spy.call_count == 1
