@@ -83,7 +83,7 @@ class Grid:
             print("\n")
             
         def drawObscured() -> None:
-            #TODO
+            pass
 
         def move(x, y) -> str:
             if cells[x][y]=="ship":
