@@ -87,7 +87,7 @@ class Grid:
     def move(self, x, y) -> str:
         if self.cells[x][y]=="ship":
             for ship in self.ships:
-                for i in range(0, len(ship)):
+                for i in enumerate(ship):
                     if ship[i].x==x and ship[i].y==y:
                         self.cells[x][y]="hit"
                         del ship[i]

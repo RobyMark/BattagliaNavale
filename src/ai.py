@@ -52,7 +52,7 @@ class AI:
             self.randomMove(grid)
 
     def removeLastMove(self) -> None:
-        for i in range(0, len(self.availableMoves)):
+        for i in enumerate(self.availableMoves):
             if self.availableMoves[i].x == self.lastMove.x and self.availableMoves[i].y == self.lastMove.y:
                 del self.availableMoves[i]
                 break
