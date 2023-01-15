@@ -16,7 +16,7 @@ def test_Grid() -> None:
     grid = Grid(4, 4)
     assert grid.tryAddShip(Pair(2, 3), 2, "w") == "success"
     grid = Grid(4, 4)
-    assert grid.tryAddShip(Pair(2, 1), 3, "s") == "success"
+    assert grid.tryAddShip(Pair(1, 1), 3, "s") == "success"
     assert grid.tryAddShip(Pair(2, 3), 2, "w") == "fail"
 
     grid = Grid(4, 4)
