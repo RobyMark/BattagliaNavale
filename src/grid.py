@@ -30,8 +30,7 @@ class Grid:
             if canBePlaced == "true":
                 self.addShip(pos, length, orientation)
                 return "success"
-            else:
-                return "fail"
+            return "fail"
 
         def areCellsFree(self, direction, z, start, end) -> str:
             if direction == "vertical":
@@ -83,7 +82,8 @@ class Grid:
             print("\n")
 
         def drawObscured(self) -> None:
-            pass
+            #TODO
+            self.drawRevealed() #to remove
 
         def move(self, x, y) -> str:
             if self.cells[x][y]=="ship":
@@ -94,8 +94,9 @@ class Grid:
                             del ship[i]
                             if len(ship)==0:
                                 return "sunk"
-                            else:
-                                return "hit"
+                            return "hit"
+                print("Error: ship was not in ship list")
+                return "miss"
             else:
                 self.cells[i][j]="miss"
                 return "miss"

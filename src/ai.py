@@ -1,6 +1,5 @@
 import random
 from src.pair import Pair
-from src.grid import Grid
 
 class AI:
     def __init__(self, grid):
@@ -24,7 +23,7 @@ class AI:
                 i+=1
 
     def makeMove(self, grid) -> None:
-        if self.lastOutcome == "miss" or self.lastOutcome == "sunk":
+        if self.lastOutcome in ("miss", "sunk"):
             self.randomMove(grid)
         else:
             self.checkNeighbours(grid)
@@ -47,7 +46,7 @@ class AI:
             self.lastMove = Pair(self.lastMove.x, self.lastMove.y+1)
 
         if moveFound == 1:
-            lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)
+            self.lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)
             self.removeLastMove()
         else:
             self.randomMove(grid)
