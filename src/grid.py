@@ -20,13 +20,13 @@ class Grid:
             if pos.x-length>=0:
                 canBePlaced = self.areCellsFree("vertical", pos.y, pos.x-length, pos.x)
         elif orientation=="s":
-            if pos.x+length<self.height:
+            if pos.x+length<=self.height:
                 canBePlaced = self.areCellsFree("vertical", pos.y, pos.x, pos.x+length)
         elif orientation=="w":
             if pos.y-length>=0:
                 canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y-length, pos.y)
         elif orientation=="e":
-            if pos.y+length<self.width:
+            if pos.y+length<=self.width:
                 canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y, pos.y+length)
 
         if canBePlaced == "true":
