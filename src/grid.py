@@ -18,13 +18,13 @@ class Grid:
             if pos.x-length>=0:
                 canBePlaced = self.areCellsFree("vertical", pos.y, pos.x-length, pos.x)
         elif orientation=="s":
-            if pos.x+length<height:
+            if pos.x+length<self.height:
                 canBePlaced = self.areCellsFree("vertical", pos.y, pos.x, pos.x+length)
         elif orientation=="w":
             if pos.y-length>=0:
                 canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y-length, pos.y)
         elif orientation=="e":
-            if pos.y+length<width:
+            if pos.y+length<self.width:
                 canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y, pos.y+length)
 
         if canBePlaced == "true":
@@ -63,12 +63,12 @@ class Grid:
 
     def drawRevealed(self) -> None:
         print("  ")
-        for i in range(0, width):
+        for i in range(0, self.width):
             print(string.ascii_lowercase[i]+" ")
         print("\n")
-        for i in range(0, height):
+        for i in range(0, self.height):
             print(i+" ")
-            for j in range(0, width):
+            for j in range(0, self.width):
                 if self.cells[i][j]=="empty":
                     print("O")
                 elif self.cells[i][j]=="hit":
@@ -82,7 +82,6 @@ class Grid:
         print("\n")
 
     def drawObscured(self) -> None:
-        #TODO
         self.drawRevealed() #to remove
 
     def move(self, x, y) -> str:
@@ -97,6 +96,5 @@ class Grid:
                         return "hit"
             print("Error: ship was not in ship list")
             return "miss"
-        else:
-            self.cells[i][j]="miss"
-            return "miss"
+        self.cells[i][j]="miss"
+        return "miss"
