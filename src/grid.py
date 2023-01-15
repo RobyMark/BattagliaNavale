@@ -83,7 +83,7 @@ class Grid:
             print("\n")
         print("\n")
 
-    def drawObscured() -> None:
+    def drawObscured(self) -> None:
             print("  ")
             for i in range(0, width):
                 print(string.ascii_lowercase[i]+" ")
@@ -91,11 +91,11 @@ class Grid:
             for i in range(0, height):
                 print(i+" ")
                 for j in range(0, width):
-                    if cells[i][j] is not "hit" or "miss":
+                    if self.cells[i][j] is not "hit" or "miss":
                         print("O")
-                    elif cells[i][j]=="hit":
+                    elif self.cells[i][j]=="hit":
                         print("X")
-                    elif cells[i][j]=="miss":
+                    elif self.cells[i][j]=="miss":
                         print("M")
                     print(" ")
                 print("\n")
