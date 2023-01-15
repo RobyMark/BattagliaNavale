@@ -28,6 +28,10 @@ def test_Grid() -> None:
     assert grid.areCellsFree("orizontal", 1, 0, 3) == "true"
 
     grid = Grid(4, 4)
+    grid.addShip(Pair(3, 0), 2, "n")
+    assert grid.cells[3][0] == "ship"
+
+    grid = Grid(4, 4)
     grid.addShip(Pair(0, 1), 3, "s")
     grid.addShip(Pair(3, 2), 2, "e")
     grid.addShip(Pair(2, 3), 2, "w")
@@ -40,11 +44,11 @@ def test_Grid() -> None:
     assert grid.ships[0][1].x==1
     assert grid.ships[0][1].y==1
     assert grid.cells[0][1] == "ship"
-    assert grid.cells[0][3] == "ship"
+    assert grid.cells[0][3] == "empty"
     assert grid.cells[3][0] == "ship"
 
-    assert grid.move(0, 0) == "miss"
     assert grid.move(0, 1) == "hit"
-    assert grid.move(0, 2) == "hit"
-    assert grid.move(0, 3) == "sunk"
+    assert grid.move(1, 1) == "hit"
+    assert grid.move(2, 1) == "sunk"
+    assert grid.move(3, 1) == "miss"
     
