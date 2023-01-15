@@ -1,59 +1,58 @@
 import random
-from pair import Pair
-from grid import Grid
+from src.pair import Pair
 
 class AI:
     def __init__(self, grid):
-        pair lastMove = null
-        str lastOutcome = "miss"
-        availableMoves=[]
-        initAvailableMoves(grid)
-    
-    def initAvailableMoves(grid) -> None:
+        self.lastMove = Pair(-1, -1)
+        self.lastOutcome = "miss"
+        self.availableMoves=[]
+        self.initAvailableMoves(grid)
+
+    def initAvailableMoves(self, grid) -> None:
         for i in range(grid.height):
             for j in range(grid.width):
-                availableMoves.append(Pair(i, j))
-    
+                self.availableMoves.append(Pair(i, j))
+
     #note: shipsLength is an array of int which contains the lenght of each ship
-    def placeShips(grid, shipsLength, attempts=50) -> None:
+    def placeShips(self, grid, shipsLength, attempts=50) -> None:
         for shipLength in shipsLength:
             outcome = "fail"
             i = 0
-            while outcome == "fail" and i<attempts
-                outcome = grid.tryAddShip(randint(0, height-1), randint(0, width-1), shipLength, random.choice(["n", "s", "w", "e"]))
+            while outcome == "fail" and i<attempts:
+                outcome = grid.tryAddShip(random.randint(0, grid.height-1), random.randint(0, grid.width-1), shipLength, random.choice(["n", "s", "w", "e"]))
                 i+=1
 
-    def makeMove(grid) -> None:
-        if lastOutcome == "miss" or lastOutcome == "sunk":
-            randomMove(grid)
+    def makeMove(self, grid) -> None:
+        if self.lastOutcome in ("miss", "sunk"):
+            self.randomMove(grid)
         else:
-            checkNeighbours(grid)
-    
-    def randomMove(grid) -> None:
-        i = random.randint(0, len(availableMoves)-1)
-        lastMove = availableMoves[i]
-        lastOutcome = grid.move(lastMove.x, lastMove.y)
-        del availableMoves[i]
+            self.checkNeighbours(grid)
 
-    def checkNeighbours(grid) -> None:
+    def randomMove(self, grid) -> None:
+        i = random.randint(0, len(self.availableMoves)-1)
+        self.lastMove = self.availableMoves[i]
+        self.lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)
+        del self.availableMoves[i]
+
+    def checkNeighbours(self, grid) -> None:
         moveFound = 0
-        if lastMove.x>0 and grid.cells[lastMove.x-1][lastMove.y]!="hit":
-            lastMove = Pair([lastMove.x-1][lastMove.y])
-        elif lastMove.x<grid.height-1 and grid.cells[lastMove.x+1][lastMove.y]!="hit":
-            lastMove = Pair([lastMove.x+1][lastMove.y])
-        elif lastMove.y>0 and grid.cells[lastMove.x][lastMove.y-1]!="hit":
-            lastMove = Pair([lastMove.x][lastMove.y-1])
-        elif lastMove.y<grid.width-1 and grid.cells[lastMove.x][lastMove.y+1]!="hit":
-            lastMove = Pair([lastMove.x][lastMove.y+1])
+        if self.lastMove.x>0 and grid.cells[self.lastMove.x-1][self.lastMove.y]!="hit":
+            self.lastMove = Pair(self.lastMove.x-1, self.lastMove.y)
+        elif self.lastMove.x<grid.height-1 and grid.cells[self.lastMove.x+1][self.lastMove.y]!="hit":
+            self.lastMove = Pair(self.lastMove.x+1, self.lastMove.y)
+        elif self.lastMove.y>0 and grid.cells[self.lastMove.x][self.lastMove.y-1]!="hit":
+            self.lastMove = Pair(self.lastMove.x, self.lastMove.y-1)
+        elif self.lastMove.y<grid.width-1 and grid.cells[self.lastMove.x][self.lastMove.y+1]!="hit":
+            self.lastMove = Pair(self.lastMove.x, self.lastMove.y+1)
 
         if moveFound == 1:
-            lastOutcome = grid.move(lastMove.x, lastMove.y)
-            removeLastMove()
+            self.lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)
+            self.removeLastMove()
         else:
-            randomMove()
+            self.randomMove(grid)
 
-    def removeLastMove() -> None:
-        for i in range(0, len(availableMoves)):
-            if availableMoves[i].x == lastMove.x and availableMoves[i].y == lastMove.y:
-                del availableMoves[i]
+    def removeLastMove(self) -> None:
+        for i in enumerate(self.availableMoves):
+            if self.availableMoves[i].x == self.lastMove.x and self.availableMoves[i].y == self.lastMove.y:
+                del self.availableMoves[i]
                 break
