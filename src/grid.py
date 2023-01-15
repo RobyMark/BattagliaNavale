@@ -16,19 +16,19 @@ class Grid:
             canBePlaced = "true"
             if orientation=="n":
                 if pos.x-length>=0:
-                    canBePlaced = areCellsFree("vertical", pos.y, pos.x-length, pos.x)
+                    canBePlaced = self.areCellsFree("vertical", pos.y, pos.x-length, pos.x)
             elif orientation=="s":
                 if pos.x+length<height:
-                    canBePlaced = areCellsFree("vertical", pos.y, pos.x, pos.x+length)
+                    canBePlaced = self.areCellsFree("vertical", pos.y, pos.x, pos.x+length)
             elif orientation=="w":
                 if pos.y-length>=0:
-                    canBePlaced = areCellsFree("orizontal", pos.x, pos.y-length, pos.y)
+                    canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y-length, pos.y)
             elif orientation=="e":
                 if pos.y+length<width:
-                    canBePlaced = areCellsFree("orizontal", pos.x, pos.y, pos.y+length)
+                    canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y, pos.y+length)
 
             if canBePlaced == "true":
-                addShip(pos, length, orientation)
+                self.addShip(pos, length, orientation)
                 return "success"
             else:
                 return "fail"
@@ -36,11 +36,11 @@ class Grid:
         def areCellsFree(direction, z, start, end) -> str:
             if direction == "vertical":
                 for i in range(start, end):
-                    if cells[i][z]=="ship":
+                    if self.cells[i][z]=="ship":
                         return
             else:
                 for i in range(start, end):
-                    if cells[z][i]=="ship":
+                    if self.cells[z][i]=="ship":
                         return "false"
             return "true"
 
@@ -49,18 +49,18 @@ class Grid:
             ship = []
             for k in range(0, length):
                 if orientation=="n":
-                    cells[pos.x-k][pos.y]="ship"
+                    self.cells[pos.x-k][pos.y]="ship"
                     ship.append(Pair(pos.x-k, pos.y))
                 elif orientation=="s":
-                    cells[pos.x+k][pos.y]="ship"
+                    self.cells[pos.x+k][pos.y]="ship"
                     ship.append(Pair(pos.x+k, pos.y))
                 elif orientation=="w":
-                    cells[pos.x][pos.y-k]="ship"
+                    self.cells[pos.x][pos.y-k]="ship"
                     ship.append(Pair(pos.x, pos.y-k))
                 elif orientation=="e":
-                    cells[pos.x][pos.y+k]="ship"
+                    self.cells[pos.x][pos.y+k]="ship"
                     ship.append(Pair(pos.x, pos.y+k))
-            ships.append(ship)
+            self.ships.append(ship)
 
         def drawRevealed() -> None:
             print("  ")
@@ -86,16 +86,16 @@ class Grid:
             pass
 
         def move(x, y) -> str:
-            if cells[x][y]=="ship":
-                for ship in ships:
+            if self.cells[x][y]=="ship":
+                for ship in self.ships:
                     for i in range(0, len(ship)):
                         if ship[i].x==x and ship[i].y==y:
-                            cells[x][y]="hit"
+                            self.cells[x][y]="hit"
                             del ship[i]
                             if len(ship)==0:
                                 return "sunk"
                             else:
                                 return "hit"
             else:
-                cells[i][j]="miss"
+                self.cells[i][j]="miss"
                 return "miss"

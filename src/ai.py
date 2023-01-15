@@ -20,14 +20,14 @@ class AI:
             outcome = "fail"
             i = 0
             while outcome == "fail" and i<attempts:
-                outcome = grid.tryAddShip(randint(0, height-1), randint(0, width-1), shipLength, random.choice(["n", "s", "w", "e"]))
+                outcome = grid.tryAddShip(random.randint(0, grid.height-1), random.randint(0, grid.width-1), shipLength, random.choice(["n", "s", "w", "e"]))
                 i+=1
 
     def makeMove(self, grid) -> None:
         if self.lastOutcome == "miss" or self.lastOutcome == "sunk":
-            randomMove(grid)
+            self.randomMove(grid)
         else:
-            checkNeighbours(grid)
+            self.checkNeighbours(grid)
 
     def randomMove(self, grid) -> None:
         i = random.randint(0, len(self.availableMoves)-1)
@@ -48,9 +48,9 @@ class AI:
 
         if moveFound == 1:
             lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)
-            removeLastMove()
+            self.removeLastMove()
         else:
-            randomMove()
+            self.randomMove()
 
     def removeLastMove(self) -> None:
         for i in range(0, len(self.availableMoves)):
