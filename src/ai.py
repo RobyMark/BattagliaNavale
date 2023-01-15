@@ -19,7 +19,7 @@ class AI:
             outcome = "fail"
             i = 0
             while outcome == "fail" and i<attempts:
-                outcome = grid.tryAddShip(random.randint(0, grid.height-1), random.randint(0, grid.width-1), shipLength, random.choice(["n", "s", "w", "e"]))
+                outcome = grid.tryAddShip(Pair(random.randint(0, grid.height-1), random.randint(0, grid.width-1)), shipLength, random.choice(["n", "s", "w", "e"]))
                 i+=1
 
     def makeMove(self, grid) -> None:
@@ -52,7 +52,8 @@ class AI:
             self.randomMove(grid)
 
     def removeLastMove(self) -> None:
-        for i in enumerate(self.availableMoves):
+        n=len(self.availableMoves)
+        for i in range(n):
             if self.availableMoves[i].x == self.lastMove.x and self.availableMoves[i].y == self.lastMove.y:
                 del self.availableMoves[i]
                 break
