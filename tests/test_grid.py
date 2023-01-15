@@ -47,8 +47,8 @@ def test_Grid() -> None:
     assert grid.cells[0][3] == "empty"
     assert grid.cells[3][0] == "ship"
 
-    assert grid.move(0, 0) == "miss"
-    assert grid.move(1, 0) == "hit"
-    assert grid.move(2, 0) == "hit"
-    assert grid.move(3, 0) == "sunk"
+    assert grid.move(0, 1) == "miss"
+    assert grid.move(1, 1) == "hit"
+    assert grid.move(2, 1) == "hit"
+    assert grid.move(3, 1) == "sunk"
     
