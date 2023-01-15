@@ -90,6 +90,7 @@ class Grid:
         if self.cells[x][y]=="ship":
             for ship in self.ships:
                 n=len(ship)
+                i=0
                 while i<n:
                     if ship[i].x==x and ship[i].y==y:
                         self.cells[x][y]="hit"
