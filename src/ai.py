@@ -1,10 +1,10 @@
 import random
-from pair import Pair
-from grid import Grid
+from src.pair import Pair
+from src.grid import Grid
 
 class AI:
     def __init__(self, grid):
-        #pair lastMove = null
+        self.lastMove = Pair(-1, -1)
         self.lastOutcome = "miss"
         self.availableMoves=[]
         initAvailableMoves(grid)
