@@ -89,13 +89,15 @@ class Grid:
     def move(self, x, y) -> str:
         if self.cells[x][y]=="ship":
             for ship in self.ships:
-                for i in enumerate(ship):
+                n=len(ship)
+                while i<n:
                     if ship[i].x==x and ship[i].y==y:
                         self.cells[x][y]="hit"
                         del ship[i]
                         if len(ship)==0:
                             return "sunk"
                         return "hit"
+                    i+=1
             print("Error: ship was not in ship list")
             return "miss"
         self.cells[x][y]="miss"
