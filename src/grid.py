@@ -83,8 +83,23 @@ class Grid:
             print("\n")
         print("\n")
 
-    def drawObscured(self) -> None:
-        self.drawRevealed() #to remove
+    def drawObscured() -> None:
+            print("  ")
+            for i in range(0, width):
+                print(string.ascii_lowercase[i]+" ")
+            print("\n")
+            for i in range(0, height):
+                print(i+" ")
+                for j in range(0, width):
+                    if cells[i][j] is not "hit" or "miss":
+                        print("O")
+                    elif cells[i][j]=="hit":
+                        print("X")
+                    elif cells[i][j]=="miss":
+                        print("M")
+                    print(" ")
+                print("\n")
+            print("\n")
 
     def move(self, x, y) -> str:
         if self.cells[x][y]=="ship":
@@ -103,3 +118,4 @@ class Grid:
             return "miss"
         self.cells[x][y]="miss"
         return "miss"
+
