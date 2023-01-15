@@ -38,12 +38,16 @@ class AI:
         moveFound = 0
         if self.lastMove.x>0 and grid.cells[self.lastMove.x-1][self.lastMove.y]!="hit":
             self.lastMove = Pair(self.lastMove.x-1, self.lastMove.y)
+            moveFound = 1
         elif self.lastMove.x<grid.height-1 and grid.cells[self.lastMove.x+1][self.lastMove.y]!="hit":
             self.lastMove = Pair(self.lastMove.x+1, self.lastMove.y)
+            moveFound = 1
         elif self.lastMove.y>0 and grid.cells[self.lastMove.x][self.lastMove.y-1]!="hit":
             self.lastMove = Pair(self.lastMove.x, self.lastMove.y-1)
+            moveFound = 1
         elif self.lastMove.y<grid.width-1 and grid.cells[self.lastMove.x][self.lastMove.y+1]!="hit":
             self.lastMove = Pair(self.lastMove.x, self.lastMove.y+1)
+            moveFound = 1
 
         if moveFound == 1:
             self.lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)
