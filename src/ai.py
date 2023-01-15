@@ -9,13 +9,13 @@ class AI:
         availableMoves=[]
         initAvailableMoves(grid)
     
-    def initAvailableMoves(grid) --> None:
+    def initAvailableMoves(grid) -> None:
         for i in range(grid.height):
             for j in range(grid.width):
                 availableMoves.append(Pair(i, j))
     
     #note: shipsLength is an array of int which contains the lenght of each ship
-    def placeShips(grid, shipsLength, attempts=50) --> None:
+    def placeShips(grid, shipsLength, attempts=50) -> None:
         for shipLength in shipsLength:
             outcome = "fail"
             i = 0
@@ -23,19 +23,19 @@ class AI:
                 outcome = grid.tryAddShip(randint(0, height-1), randint(0, width-1), shipLength, random.choice(["n", "s", "w", "e"]))
                 i+=1
 
-    def makeMove(grid) --> None:
+    def makeMove(grid) -> None:
         if lastOutcome == "miss" or lastOutcome == "sunk":
             randomMove(grid)
         else:
             checkNeighbours(grid)
     
-    def randomMove(grid) --> None:
+    def randomMove(grid) -> None:
         i = random.randint(0, len(availableMoves)-1)
         lastMove = availableMoves[i]
         lastOutcome = grid.move(lastMove.x, lastMove.y)
         del availableMoves[i]
 
-    def checkNeighbours(grid) --> None:
+    def checkNeighbours(grid) -> None:
         moveFound = 0
         if lastMove.x>0 and grid.cells[lastMove.x-1][lastMove.y]!="hit":
             lastMove = Pair([lastMove.x-1][lastMove.y])
@@ -52,7 +52,7 @@ class AI:
         else:
             randomMove()
 
-    def removeLastMove() --> None:
+    def removeLastMove() -> None:
         for i in range(0, len(availableMoves)):
             if availableMoves[i].x == lastMove.x and availableMoves[i].y == lastMove.y:
                 del availableMoves[i]
