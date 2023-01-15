@@ -15,7 +15,7 @@ class Grid:
         self.ships = []
 
     def tryAddShip(self, pos, length, orientation) -> str:
-        canBePlaced = "true"
+        canBePlaced = "false"
         if orientation=="n":
             if pos.x-length>=0:
                 canBePlaced = self.areCellsFree("vertical", pos.y, pos.x-length, pos.x)
