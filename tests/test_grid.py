@@ -24,7 +24,7 @@ def test_Grid() -> None:
     assert grid.areCellsFree("vertical", 2, 0, 3) == "false"
     assert grid.areCellsFree("vertical", 1, 0, 3) == "true"
     assert grid.areCellsFree("vertical", 2, 0, 1) == "true"
-    assert grid.areCellsFree("orizontal", 2, 0, 2) == "false"
+    assert grid.areCellsFree("orizontal", 2, 0, 3) == "false"
     assert grid.areCellsFree("orizontal", 1, 0, 3) == "true"
 
     grid = Grid(4, 4)

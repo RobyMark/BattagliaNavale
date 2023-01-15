@@ -36,11 +36,11 @@ class Grid:
 
     def areCellsFree(self, direction, z, start, end) -> str:
         if direction == "vertical":
-            for i in range(start, end+1):
+            for i in range(start, end):
                 if self.cells[i][z]=="ship":
                     return "false"
         else:
-            for i in range(start, end+1):
+            for i in range(start, end):
                 if self.cells[z][i]=="ship":
                     return "false"
         return "true"
