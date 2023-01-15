@@ -7,9 +7,9 @@ class Grid:
         self.width = width
         self.cells = []
         for i in range(self.height):
-            self.cells[i] = []
+            self.cells.append([])
             for j in range(self.width):
-                self.cells[i][j] = "empty"
+                self.cells[i].append("empty")
         self.ships = []
 
     def tryAddShip(self, pos, length, orientation) -> str:
