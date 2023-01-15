@@ -96,5 +96,5 @@ class Grid:
                         return "hit"
             print("Error: ship was not in ship list")
             return "miss"
-        self.cells[i][j]="miss"
+        self.cells[x][y]="miss"
         return "miss"
