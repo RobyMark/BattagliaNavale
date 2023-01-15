@@ -38,13 +38,13 @@ class AI:
     def checkNeighbours(self, grid) -> None:
         moveFound = 0
         if self.lastMove.x>0 and grid.cells[self.lastMove.x-1][self.lastMove.y]!="hit":
-            self.lastMove = Pair([self.lastMove.x-1][self.lastMove.y])
+            self.lastMove = Pair(self.lastMove.x-1, self.lastMove.y)
         elif self.lastMove.x<grid.height-1 and grid.cells[self.lastMove.x+1][self.lastMove.y]!="hit":
-            self.lastMove = Pair([self.lastMove.x+1][self.lastMove.y])
+            self.lastMove = Pair(self.lastMove.x+1, self.lastMove.y)
         elif self.lastMove.y>0 and grid.cells[self.lastMove.x][self.lastMove.y-1]!="hit":
-            self.lastMove = Pair([self.lastMove.x][self.lastMove.y-1])
+            self.lastMove = Pair(self.lastMove.x, self.lastMove.y-1)
         elif self.lastMove.y<grid.width-1 and grid.cells[self.lastMove.x][self.lastMove.y+1]!="hit":
-            self.lastMove = Pair([self.lastMove.x][self.lastMove.y+1])
+            self.lastMove = Pair(self.lastMove.x, self.lastMove.y+1)
 
         if moveFound == 1:
             lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)

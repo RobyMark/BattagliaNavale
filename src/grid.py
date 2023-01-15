@@ -6,13 +6,13 @@ class Grid:
         self.height = height
         self.width = width
         self.cells = []
-        for i in range(grid.height):
+        for i in range(self.height):
             self.cells[i] = []
-            for j in range(grid.width):
+            for j in range(self.width):
                 self.cells[i][j] = "empty"
         self.ships = []
 
-        def tryAddShip(pos, length, orientation) -> str:
+        def tryAddShip(self, pos, length, orientation) -> str:
             canBePlaced = "true"
             if orientation=="n":
                 if pos.x-length>=0:
@@ -33,7 +33,7 @@ class Grid:
             else:
                 return "fail"
 
-        def areCellsFree(direction, z, start, end) -> str:
+        def areCellsFree(self, direction, z, start, end) -> str:
             if direction == "vertical":
                 for i in range(start, end):
                     if self.cells[i][z]=="ship":
@@ -45,7 +45,7 @@ class Grid:
             return "true"
 
 
-        def addShip(pos, length, orientation) -> None:
+        def addShip(self, pos, length, orientation) -> None:
             ship = []
             for k in range(0, length):
                 if orientation=="n":
@@ -62,7 +62,7 @@ class Grid:
                     ship.append(Pair(pos.x, pos.y+k))
             self.ships.append(ship)
 
-        def drawRevealed() -> None:
+        def drawRevealed(self) -> None:
             print("  ")
             for i in range(0, width):
                 print(string.ascii_lowercase[i]+" ")
@@ -81,11 +81,11 @@ class Grid:
                     print(" ")
                 print("\n")
             print("\n")
-            
-        def drawObscured() -> None:
+
+        def drawObscured(self) -> None:
             pass
 
-        def move(x, y) -> str:
+        def move(self, x, y) -> str:
             if self.cells[x][y]=="ship":
                 for ship in self.ships:
                     for i in range(0, len(ship)):
