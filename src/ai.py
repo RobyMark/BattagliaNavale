@@ -19,7 +19,7 @@ class AI:
         for shipLength in shipsLength:
             outcome = "fail"
             i = 0
-            while outcome == "fail" and i<attempts
+            while outcome == "fail" and i<attempts:
                 outcome = grid.tryAddShip(randint(0, height-1), randint(0, width-1), shipLength, random.choice(["n", "s", "w", "e"]))
                 i+=1
 
