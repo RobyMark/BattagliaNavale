@@ -3,16 +3,16 @@ from src.pair import Pair
 from src.grid import Grid
 
 class AI:
-    def initAvailableMoves(self, grid) -> None:
-        for i in range(grid.height):
-            for j in range(grid.width):
-                self.availableMoves.append(Pair(i, j))
-
     def __init__(self, grid):
         self.lastMove = Pair(-1, -1)
         self.lastOutcome = "miss"
         self.availableMoves=[]
-        initAvailableMoves(grid)
+        self.initAvailableMoves(grid)
+
+    def initAvailableMoves(self, grid) -> None:
+        for i in range(grid.height):
+            for j in range(grid.width):
+                self.availableMoves.append(Pair(i, j))
 
     #note: shipsLength is an array of int which contains the lenght of each ship
     def placeShips(self, grid, shipsLength, attempts=50) -> None:
