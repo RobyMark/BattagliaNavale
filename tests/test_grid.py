@@ -37,8 +37,8 @@ def test_Grid() -> None:
     assert len(grid.ships[0]) == 3
     assert grid.ships[0][0].x==0
     assert grid.ships[0][0].y==1
-    assert grid.ships[0][1].x==0
-    assert grid.ships[0][1].y==2
+    assert grid.ships[0][1].x==1
+    assert grid.ships[0][1].y==1
     assert grid.cells[0][1] == "ship"
     assert grid.cells[0][3] == "ship"
     assert grid.cells[3][0] == "ship"
