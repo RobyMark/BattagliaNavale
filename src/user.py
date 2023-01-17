@@ -2,8 +2,7 @@ from pair import Pair
 from grid import Grid
 
 class User:
-    def __init__(self, name, grid):
-        self.name = name
+    def __init__(self):
         self.lastMove = Pair(-1,-1)
         self.lastOutCome = "miss"
        
