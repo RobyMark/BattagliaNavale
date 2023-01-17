@@ -41,7 +41,7 @@ class User:
                 count = 1
             else :
                 i += 1        
-        self.lastOutCome = grid.move(self.shipX,self.shipY )
+        self.lastOutCome = grid.move(self.shipX,self.shipY)
        
 
         
