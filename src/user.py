@@ -10,12 +10,12 @@ class User:
   
     def placeShips(self, grid, shipsLength) -> None:
          for shipLength in shipsLength:
-            self.moveUserX = int (input("Enter where do you put your ships on X:"))
-            self.moveUserY = int (input("Enter where do you put your ships on Y:"))
-            self.choisePlaceShips = int (input("Enter how do you put your ships (n,s,e,o):"))
             outcome = "fail"
             i = 0
             while outcome == "fail":
+                self.moveUserX = int (input("Enter where do you put your ships on X:"))
+                self.moveUserY = int (input("Enter where do you put your ships on Y:"))
+                self.choisePlaceShips = int (input("Enter how do you put your ships (n,s,e,o):"))
                 outcome = grid.tryAddShip(self.moveUserX, self.moveUserY, shipLength, self.choisePlaceShips)
                 print('Error: reposition the ships again...')
                 i+=1
