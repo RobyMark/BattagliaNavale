@@ -6,8 +6,7 @@ class User:
         self.name = name
         self.lastMove = Pair(-1,-1)
         self.lastOutCome = "miss"
-        self.movesY = []
-        self.movesX = []
+       
   
     def placeShips(self, grid, shipsLength) -> None:
          for shipLength in shipsLength:
@@ -27,7 +26,7 @@ class User:
             self.userMove(grid,count)
             
     
-    def userMove(self, grid, countM) -> None:
+    def userMove(self, grid) -> None:
         i = 0 
         count = 1
         self.shipX = int (input("Enter the x of the enemy ships")) 
@@ -37,14 +36,11 @@ class User:
                 self.shipX = int (input("Enter the x of the enemy ships")) 
                 self.shipY = int (input("Enter the y of the enemy ships"))
 
-            if self.shipX is self.movesX[i] and self.shipY is self.movesY[i]:
+            if grid.cells[self.shipX][self.shipY] in ("miss", "hit"):
                 print("the coordinate that you entered has existed. Please try again...")
                 count = 1
             else :
                 i += 1        
-        self.movesY[countM] = self.shipX
-        self.movesX[countM] = self.shipY 
-        countM += 1
         self.lastOutCome = grid.move(self.shipX,self.shipY )
        
 
