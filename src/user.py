@@ -30,22 +30,22 @@ class User:
     def userMove(self, grid, countM) -> None:
         i = 0 
         count = 1
-        self.positionXofShapes = int (input("Enter the x of the enemy ships")) 
-        self.positionYofShapes = int (input("Enter the y of the enemy ships"))
+        self.shipX = int (input("Enter the x of the enemy ships")) 
+        self.shipY = int (input("Enter the y of the enemy ships"))
         for i in range(len(self.movesX)):
             if count == 1:
-                self.positionXofShapes = int (input("Enter the x of the avvers shapes")) 
-                self.positionYofShapes = int (input("Enter the y of the avvers shapes"))
+                self.shipX = int (input("Enter the x of the enemy ships")) 
+                self.shipY = int (input("Enter the y of the enemy ships"))
 
-            if self.positionXofShapes is self.movesX[i] and self.positionYofShapes is self.movesY[i]:
+            if self.shipX is self.movesX[i] and self.shipY is self.movesY[i]:
                 print("the coordinate that you entered has existed. Please try again...")
                 count = 1
             else :
                 i += 1        
-        self.movesY[countM] = self.positionYofShapes
-        self.movesX[countM] = self.positionXofShapes
+        self.movesY[countM] = self.shipX
+        self.movesX[countM] = self.shipY 
         countM += 1
-        self.lastOutCome = grid.move(self.positionXofShapes,self.positionYofShapes)
+        self.lastOutCome = grid.move(self.shipX,self.shipY )
        
 
         
