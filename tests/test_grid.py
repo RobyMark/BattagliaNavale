@@ -1,12 +1,13 @@
 from src.grid import Grid
 from src.pair import Pair
 
-def test_Grid() -> None:
+def test_cells() -> None:
     grid = Grid(4, 4)
     for i in range(grid.height):
         for j in range(grid.width):
             assert grid.cells[i][j] == "empty"
 
+def test_tryAddShip() -> None:
     grid = Grid(4, 4)
     assert grid.tryAddShip(Pair(0, 1), 3, "s") == "success"
     grid = Grid(4, 4)
@@ -19,6 +20,7 @@ def test_Grid() -> None:
     assert grid.tryAddShip(Pair(1, 1), 3, "s") == "success"
     assert grid.tryAddShip(Pair(2, 3), 2, "w") == "fail"
 
+def test_areCellsFree() -> None:
     grid = Grid(4, 4)
     grid.cells[2][2] = "ship"
     assert grid.areCellsFree("vertical", 2, 0, 3) == "false"
@@ -27,6 +29,7 @@ def test_Grid() -> None:
     assert grid.areCellsFree("orizontal", 2, 0, 3) == "false"
     assert grid.areCellsFree("orizontal", 1, 0, 3) == "true"
 
+def test_addShip_and_move() -> None:
     grid = Grid(4, 4)
     grid.addShip(Pair(3, 0), 2, "n")
     assert grid.cells[3][0] == "ship"
