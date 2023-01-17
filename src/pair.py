@@ -8,4 +8,3 @@ class Pair:
 
     def getY(self) -> int:
         return self.y
-        

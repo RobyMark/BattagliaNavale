@@ -25,8 +25,7 @@ class Grid:
         elif orientation=="w":
             if pos.y-length>=0:
                 canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y-length, pos.y)
-        elif orientation=="e":
-            if pos.y+length<=self.width:
+        elif orientation=="e" and (pos.y+length) <= self.width:
                 canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y, pos.y+length)
 
         if canBePlaced == "true":
@@ -85,13 +84,13 @@ class Grid:
 
     def drawObscured(self) -> None:
             print("  ")
-            for i in range(0, width):
+            for i in range(0, self.width):
                 print(string.ascii_lowercase[i]+" ")
             print("\n")
-            for i in range(0, height):
+            for i in range(0, self.height):
                 print(i+" ")
-                for j in range(0, width):
-                    if self.cells[i][j] is not "hit" or "miss":
+                for j in range(0, self.width):
+                    if self.cells[i][j] != "hit" or self.cells[i][j] != "miss":
                         print("O")
                     elif self.cells[i][j]=="hit":
                         print("X")
@@ -102,20 +101,20 @@ class Grid:
             print("\n")
 
     def move(self, x, y) -> str:
-        if self.cells[x][y]=="ship":
+        if self.cells[x][y] == "ship":
             for ship in self.ships:
-                n=len(ship)
-                i=0
-                while i<n:
-                    if ship[i].x==x and ship[i].y==y:
-                        self.cells[x][y]="hit"
+                n = len(ship)
+                i = 0
+                while i < n:
+                    if ship[i].x == x and ship[i].y == y:
+                        self.cells[x][y] = "hit"
                         del ship[i]
-                        if len(ship)==0:
+                        if len(ship) == 0:
                             return "sunk"
                         return "hit"
                     i+=1
+
             print("Error: ship was not in ship list")
             return "miss"
         self.cells[x][y]="miss"
         return "miss"
-
