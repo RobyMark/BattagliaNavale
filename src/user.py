@@ -30,8 +30,8 @@ class User:
     def userMove(self, grid, countM) -> None:
         i = 0 
         count = 1
-        self.positionXofShapes = int (input("Enter the x of the avvers shapes")) 
-        self.positionYofShapes = int (input("Enter the y of the avvers shapes"))
+        self.positionXofShapes = int (input("Enter the x of the enemy ships")) 
+        self.positionYofShapes = int (input("Enter the y of the enemy ships"))
         for i in range(len(self.movesX)):
             if count == 1:
                 self.positionXofShapes = int (input("Enter the x of the avvers shapes")) 
