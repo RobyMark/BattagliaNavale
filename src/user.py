@@ -1,5 +1,5 @@
-from pair import Pair
-from grid import Grid
+from src.pair import Pair
+from src.grid import Grid
 
 class User:
     def __init__(self, name, grid):
@@ -46,15 +46,8 @@ class User:
                 print("the coordinate that you entered has existed. Please try again...")
                 count = 1
             else :
-                i += 1        
+                i += 1
         self.movesY[countM] = self.positionYofShapes
         self.movesX[countM] = self.positionXofShapes
         countM += 1
         self.lastOutCome = grid.move(self.positionXofShapes,self.positionYofShapes)
-       
-
-        
-
-
-
-    

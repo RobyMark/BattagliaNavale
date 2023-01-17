@@ -1,4 +1,4 @@
-from pair import Pair
+from src.pair import Pair
 import string
 
 class Grid:
@@ -16,7 +16,6 @@ class Grid:
 
     def tryAddShip(self, pos, length, orientation) -> str:
         canBePlaced = "false"
-
         if orientation=="n":
             if pos.x-length>=0:
                 canBePlaced = self.areCellsFree("vertical", pos.y, pos.x-length, pos.x)
