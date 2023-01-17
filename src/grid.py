@@ -16,18 +16,14 @@ class Grid:
 
     def tryAddShip(self, pos, length, orientation) -> str:
         canBePlaced = "false"
-
-        if orientation=="n":
-            if pos.x-length>=0:
-                canBePlaced = self.areCellsFree("vertical", pos.y, pos.x-length, pos.x)
-        elif orientation=="s":
-            if pos.x+length<=self.height:
-                canBePlaced = self.areCellsFree("vertical", pos.y, pos.x, pos.x+length)
-        elif orientation=="w":
-            if pos.y-length>=0:
-                canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y-length, pos.y)
+        if orientation=="n" and pos.x-length>=0:
+            canBePlaced = self.areCellsFree("vertical", pos.y, pos.x-length, pos.x)
+        elif orientation=="s" and pos.x+length<=self.height:
+            canBePlaced = self.areCellsFree("vertical", pos.y, pos.x, pos.x+length)
+        elif orientation=="w" and pos.y-length>=0:
+            canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y-length, pos.y)
         elif orientation=="e" and (pos.y+length) <= self.width:
-                canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y, pos.y+length)
+            canBePlaced = self.areCellsFree("orizontal", pos.x, pos.y, pos.y+length)
 
         if canBePlaced == "true":
             self.addShip(pos, length, orientation)
@@ -84,22 +80,22 @@ class Grid:
         print("\n")
 
     def drawObscured(self) -> None:
-            print("  ")
-            for i in range(0, self.width):
-                print(string.ascii_lowercase[i]+" ")
+        print("  ")
+        for i in range(0, self.width):
+            print(string.ascii_lowercase[i]+" ")
+        print("\n")
+        for i in range(0, self.height):
+            print(i+" ")
+            for j in range(0, self.width):
+                if self.cells[i][j] != "hit" or self.cells[i][j] != "miss":
+                    print("O")
+                elif self.cells[i][j]=="hit":
+                    print("X")
+                elif self.cells[i][j]=="miss":
+                    print("M")
+                print(" ")
             print("\n")
-            for i in range(0, self.height):
-                print(i+" ")
-                for j in range(0, self.width):
-                    if self.cells[i][j] != "hit" or self.cells[i][j] != "miss":
-                        print("O")
-                    elif self.cells[i][j]=="hit":
-                        print("X")
-                    elif self.cells[i][j]=="miss":
-                        print("M")
-                    print(" ")
-                print("\n")
-            print("\n")
+        print("\n")
 
     def move(self, x, y) -> str:
         if self.cells[x][y] == "ship":
