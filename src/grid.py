@@ -1,4 +1,4 @@
-from pair import Pair
+from src.pair import Pair
 import string
 
 class Grid:
