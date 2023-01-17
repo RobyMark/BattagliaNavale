@@ -1,13 +1,12 @@
-from pair import Pair
-from grid import Grid
+from src.pair import Pair
+from src.grid import Grid
 
 class User:
     def __init__(self, name, grid):
         self.name = name
         self.lastMove = Pair(-1,-1)
         self.lastOutCome = "miss"
-       
-  
+
     def placeShips(self, grid, shipsLength) -> None:
          for shipLength in shipsLength:
             outcome = "fail"
@@ -23,8 +22,7 @@ class User:
     def makeMove(self, grid) -> None:
         if self.lastOutCome  == "miss" or self.lastOutCome == "sunk":
             self.userMove(grid)
-            
-    
+
     def userMove(self, grid) -> None:
         i = 0 
         count = 1
@@ -34,17 +32,9 @@ class User:
             if count == 1:
                 self.shipX = int (input("Enter the x of the enemy ships")) 
                 self.shipY = int (input("Enter the y of the enemy ships"))
-
             if grid.cells[self.shipX][self.shipY] in ("miss", "hit"):
                 print("the coordinate that you entered has existed. Please try again...")
                 count = 1
             else :
                 i += 1        
         self.lastOutCome = grid.move(self.shipX,self.shipY)
-       
-
-        
-
-
-
-    
