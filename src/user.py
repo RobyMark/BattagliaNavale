@@ -8,21 +8,15 @@ class User:
         self.lastOutCome = "miss"
         self.movesY = []
         self.movesX = []
-        self.initAvailableMoves(grid)
-
-    def initAvailableMoves(self, grid) -> None:
-        for i in range(grid.height):
-            for j in range(grid.width):
-                self.availableMoves.append(Pair(i, j))
-     
-    def placeShips(self, grid, shipsLength, attempts=50) -> None:
+  
+    def placeShips(self, grid, shipsLength) -> None:
          for shipLength in shipsLength:
             self.moveUserX = int (input("Enter where do you put your ships on X:"))
             self.moveUserY = int (input("Enter where do you put your ships on Y:"))
             self.choisePlaceShips = int (input("Enter how do you put your ships (n,s,e,o):"))
             outcome = "fail"
             i = 0
-            while outcome == "fail" and i<attempts:
+            while outcome == "fail":
                 outcome = grid.tryAddShip(self.moveUserX, self.moveUserY, shipLength, self.choisePlaceShips)
                 i+=1
 
