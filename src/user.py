@@ -1,5 +1,5 @@
-from pair import Pair
-from grid import Grid
+from src.pair import Pair
+from src.grid import Grid
 
 class User:
     def __init__(self):
