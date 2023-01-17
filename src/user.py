@@ -8,15 +8,9 @@ class User:
         self.lastOutCome = "miss"
         self.movesY = []
         self.movesX = []
-        self.initAvailableMoves(grid)
 
-    def initAvailableMoves(self, grid) -> None:
-        for i in range(grid.height):
-            for j in range(grid.width):
-                self.availableMoves.append(Pair(i, j))
-     
     def placeShips(self, grid, shipsLength, attempts=50) -> None:
-         for shipLength in shipsLength:
+        for shipLength in shipsLength:
             self.moveUserX = int (input("Enter where do you put your ships on X:"))
             self.moveUserY = int (input("Enter where do you put your ships on Y:"))
             self.choisePlaceShips = int (input("Enter how do you put your ships (n,s,e,o):"))
@@ -30,16 +24,15 @@ class User:
         count = 0
         if self.lastOutCome  == "miss" or self.lastOutCome == "sunk":
             self.userMove(grid,count)
-            
-    
+
     def userMove(self, grid, countM) -> None:
-        i = 0 
+        i = 0
         count = 1
-        self.positionXofShapes = int (input("Enter the x of the avvers shapes")) 
+        self.positionXofShapes = int (input("Enter the x of the avvers shapes"))
         self.positionYofShapes = int (input("Enter the y of the avvers shapes"))
         for i in range(len(self.movesX)):
             if count == 1:
-                self.positionXofShapes = int (input("Enter the x of the avvers shapes")) 
+                self.positionXofShapes = int (input("Enter the x of the avvers shapes"))
                 self.positionYofShapes = int (input("Enter the y of the avvers shapes"))
 
             if self.positionXofShapes is self.movesX[i] and self.positionYofShapes is self.movesY[i]:
