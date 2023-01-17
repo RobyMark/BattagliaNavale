@@ -18,6 +18,7 @@ class User:
             i = 0
             while outcome == "fail":
                 outcome = grid.tryAddShip(self.moveUserX, self.moveUserY, shipLength, self.choisePlaceShips)
+                print('Error: reposition the ships again...')
                 i+=1
 
     def makeMove(self, grid) -> None:
