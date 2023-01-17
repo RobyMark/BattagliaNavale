@@ -61,8 +61,7 @@ def test_checkNeighbours(mocker: MockerFixture) -> None:
     grid.cells[2][2]="hit"
     ai.lastMove=Pair(2, 2)
     ai.checkNeighbours(grid)
-    assert ai.lastMove.x == 1
-    assert ai.lastMove.y == 2
+    assert grid.cells[1][2] == "miss"
 
     grid = Grid(4, 4)
     ai = AI(grid)
@@ -70,8 +69,7 @@ def test_checkNeighbours(mocker: MockerFixture) -> None:
     grid.cells[1][2]="hit"
     ai.lastMove=Pair(2, 2)
     ai.checkNeighbours(grid)
-    assert ai.lastMove.x == 3
-    assert ai.lastMove.y == 2
+    assert grid.cells[3][2] == "miss"
 
     grid = Grid(4, 4)
     ai = AI(grid)
@@ -80,8 +78,7 @@ def test_checkNeighbours(mocker: MockerFixture) -> None:
     grid.cells[3][2]="hit"
     ai.lastMove=Pair(2, 2)
     ai.checkNeighbours(grid)
-    assert ai.lastMove.x == 2
-    assert ai.lastMove.y == 1
+    assert grid.cells[2][1] == "miss"
 
     grid = Grid(4, 4)
     ai = AI(grid)
@@ -91,8 +88,7 @@ def test_checkNeighbours(mocker: MockerFixture) -> None:
     grid.cells[2][1]="hit"
     ai.lastMove=Pair(2, 2)
     ai.checkNeighbours(grid)
-    assert ai.lastMove.x == 2
-    assert ai.lastMove.y == 3
+    assert grid.cells[2][3] == "miss"
 
     grid = Grid(4, 4)
     ai = AI(grid)

@@ -36,22 +36,26 @@ class AI:
 
     def checkNeighbours(self, grid) -> None:
         moveFound = 0
-        if self.lastMove.x>0 and grid.cells[self.lastMove.x-1][self.lastMove.y]!="hit":
+        oldLastMove=self.lastMove
+        if self.lastMove.x>0 and grid.cells[self.lastMove.x-1][self.lastMove.y] not in ("hit", "miss"):
             self.lastMove = Pair(self.lastMove.x-1, self.lastMove.y)
             moveFound = 1
-        elif self.lastMove.x<grid.height-1 and grid.cells[self.lastMove.x+1][self.lastMove.y]!="hit":
+        elif self.lastMove.x<grid.height-1 and grid.cells[self.lastMove.x+1][self.lastMove.y] not in ("hit", "miss"):
             self.lastMove = Pair(self.lastMove.x+1, self.lastMove.y)
             moveFound = 1
-        elif self.lastMove.y>0 and grid.cells[self.lastMove.x][self.lastMove.y-1]!="hit":
+        elif self.lastMove.y>0 and grid.cells[self.lastMove.x][self.lastMove.y-1] not in ("hit", "miss"):
             self.lastMove = Pair(self.lastMove.x, self.lastMove.y-1)
             moveFound = 1
-        elif self.lastMove.y<grid.width-1 and grid.cells[self.lastMove.x][self.lastMove.y+1]!="hit":
+        elif self.lastMove.y<grid.width-1 and grid.cells[self.lastMove.x][self.lastMove.y+1] not in ("hit", "miss"):
             self.lastMove = Pair(self.lastMove.x, self.lastMove.y+1)
             moveFound = 1
 
         if moveFound == 1:
             self.lastOutcome = grid.move(self.lastMove.x, self.lastMove.y)
             self.removeLastMove()
+            if self.lastOutcome == "miss":
+                self.lastMove=oldLastMove
+                self.lastOutcome = "hit"
         else:
             self.randomMove(grid)
 
