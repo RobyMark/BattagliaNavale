@@ -21,9 +21,8 @@ class User:
                 i+=1
 
     def makeMove(self, grid) -> None:
-        count = 0
         if self.lastOutCome  == "miss" or self.lastOutCome == "sunk":
-            self.userMove(grid,count)
+            self.userMove(grid)
             
     
     def userMove(self, grid) -> None:
