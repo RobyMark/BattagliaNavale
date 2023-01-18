@@ -15,7 +15,7 @@ def main():
     print("START!\n")
     gridAi.drawObscured()
     gridUs.drawRevealed()
-    while (True):
+    while True:
         user.userMove(gridAi)
         if gridAi.checkLenghtShip() == 0:
             print("You win!")
@@ -30,7 +30,6 @@ def main():
         print("Enemy's last outcome: " + ai.lastOutcome)
         print("Your last move: " + str(user.lastMove.x) + ", " + str(user.lastMove.y))
         print("Your last outcome: " + user.lastOutcome)
-        
 
 if __name__ == "__main__":
     main()
