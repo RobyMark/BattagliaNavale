@@ -1,5 +1,4 @@
 from src.pair import Pair
-import string
 
 class Grid:
     def __init__(self, height, width):
