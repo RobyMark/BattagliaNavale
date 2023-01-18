@@ -112,6 +112,7 @@ class Grid:
                         del ship[i]
                         if len(ship) == 0:
                             return "sunk"
+                            del ship
                         return "hit"
                     i+=1
 
