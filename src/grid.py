@@ -60,45 +60,46 @@ class Grid:
         self.ships.append(ship)
 
     def drawRevealed(self) -> None:
-        print("  ")
+        print("  ", end = '')
         for i in range(0, self.width):
-            print(string.ascii_lowercase[i]+" ")
-        print("\n")
+            print(string.ascii_lowercase[i]+" ", end = '')
+        print("\n", end = '')
         for i in range(0, self.height):
-            print(i+" ")
+            print(str(i)+" ", end = '')
             for j in range(0, self.width):
                 if self.cells[i][j]=="empty":
-                    print("O")
+                    print("O", end = '')
                 elif self.cells[i][j]=="hit":
-                    print("X")
+                    print("X", end = '')
                 elif self.cells[i][j]=="ship":
-                    print("B")
+                    print("B", end = '')
                 elif self.cells[i][j]=="miss":
-                    print("M")
-                print(" ")
-            print("\n")
-        print("\n")
+                    print("M", end = '')
+                print(" ", end = '')
+            print("\n", end = '')
+        print("\n", end = '')
 
     def drawObscured(self) -> None:
-        print("  ")
+        print("  ", end = '')
         for i in range(0, self.width):
-            print(string.ascii_lowercase[i]+" ")
-        print("\n")
+            print(string.ascii_lowercase[i]+" ", end = '')
+        print("\n", end = '')
         for i in range(0, self.height):
-            print(i+" ")
+            print(str(i)+" ", end = '')
             for j in range(0, self.width):
-                if self.cells[i][j] != "hit" or self.cells[i][j] != "miss":
-                    print("O")
-                elif self.cells[i][j]=="hit":
-                    print("X")
+                if self.cells[i][j]=="hit":
+                    print("X", end = '')
                 elif self.cells[i][j]=="miss":
-                    print("M")
-                print(" ")
-            print("\n")
-        print("\n")
+                    print("M", end = '')
+                else:
+                    print("O", end = '')
+                print(" ", end = '')
+            print("\n", end = '')
+        print("\n", end = '')
 
     def move(self, x, y) -> str:
         if self.cells[x][y] == "ship":
+            k = 0
             for ship in self.ships:
                 n = len(ship)
                 i = 0
@@ -107,10 +108,11 @@ class Grid:
                         self.cells[x][y] = "hit"
                         del ship[i]
                         if len(ship) == 0:
-                            del ship
+                            del self.ships[k]
                             return "sunk"
                         return "hit"
                     i+=1
+                k+=1
 
             print("Error: ship was not in ship list")
             return "miss"
@@ -118,6 +120,4 @@ class Grid:
         return "miss"
 
     def checkLenghtShip (self) -> int :
-        if (len(self.ships) == 0):
-            print("This is the end of the game")
-            return 0
+        return len(self.ships)
