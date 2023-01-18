@@ -5,14 +5,15 @@ from src.user import User
 from src.ai import AI
 
 def main():
-    grid = Grid()
+    gridAi = Grid()
+    gridUs = Grid()
     user = User()
     ai = AI()
-    ai.placeShips(grid,4)
-    user.placeShips(grid,4)
-    while (grid.checkLenghtShip() != 0):
-        user.userMove(grid)
-        ai.makeMove(grid)
+    ai.placeShips(gridAi,4)
+    user.placeShips(gridUs,4)
+    while (gridAi.checkLenghtShip() != 0 and gridUs.checkLenghtShip() != 0):
+        user.userMove(gridUs)
+        ai.makeMove(gridAi)
         
 
 if __name__ == "__main__":
