@@ -54,4 +54,29 @@ def test_addShip_and_move() -> None:
     assert grid.move(1, 1) == "hit"
     assert grid.move(2, 1) == "sunk"
     assert grid.move(3, 1) == "miss"
-    
+
+def test_checkLenghtShip() -> None:
+    grid = Grid(4, 4)
+    assert grid.checkLenghtShip() == 0
+    grid.addShip(Pair(3, 0), 2, "n")
+    assert grid.checkLenghtShip() == 1
+    grid.addShip(Pair(0, 1), 3, "s")
+    assert grid.checkLenghtShip() == 2
+
+def test_drawObscured(capsys) -> None:
+    grid = Grid(2, 2)
+    grid.cells[0][1] = "hit"
+    grid.cells[1][0] = "miss"
+    grid.cells[1][1] = "ship"
+    grid.drawObscured()
+    captured = capsys.readouterr()
+    assert captured.out == "  a b \n0 O X \n1 M O \n\n"
+
+def test_drawRevealed(capsys) -> None:
+    grid = Grid(2, 2)
+    grid.cells[0][1] = "hit"
+    grid.cells[1][0] = "miss"
+    grid.cells[1][1] = "ship"
+    grid.drawRevealed()
+    captured = capsys.readouterr()
+    assert captured.out == "  a b \n0 O X \n1 M B \n\n"
