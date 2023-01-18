@@ -55,6 +55,10 @@ def test_addShip_and_move() -> None:
     assert grid.move(2, 1) == "sunk"
     assert grid.move(3, 1) == "miss"
 
+    grid = Grid(4, 4)
+    grid.cells[0][1] == "ship"
+    assert grid.move(0, 1) == "miss"
+
 def test_checkLenghtShip() -> None:
     grid = Grid(4, 4)
     assert grid.checkLenghtShip() == 0
