@@ -107,6 +107,7 @@ class Grid:
                         self.cells[x][y] = "hit"
                         del ship[i]
                         if len(ship) == 0:
+                            del ship
                             return "sunk"
                         return "hit"
                     i+=1
