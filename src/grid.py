@@ -122,7 +122,8 @@ class Grid:
         return "miss"
 
 
-    def checkLenghtShip (self) :
+    def checkLenghtShip (self) -> int :
         if (len(self.ships) == 0):
             print("This is the end of the game")
+            return 0
         
