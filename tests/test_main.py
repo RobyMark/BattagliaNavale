@@ -32,7 +32,7 @@ def test_main2(mocker: MockerFixture, monkeypatch) -> None:
             inputList.append(j)
     inputs = iter (inputList)
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-    randintL = [0, 0, 6, 1, 2, 3, 0, 4, 7, 0, 6, 5, 7, 7, 0, 7]
+    randintL = [0, 0, 6, 1, 2, 3, 0, 4, 7, 0, 6, 5, 6, 7, 0, 7]
     for i in range(64):
         randintL.append(0)
     randint = iter (randintL)
