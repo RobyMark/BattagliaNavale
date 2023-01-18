@@ -62,7 +62,7 @@ class Grid:
     def drawRevealed(self) -> None:
         print("  ", end = '')
         for i in range(0, self.width):
-            print(string.ascii_lowercase[i]+" ", end = '')
+            print(str(i)+" ", end = '')
         print("\n", end = '')
         for i in range(0, self.height):
             print(str(i)+" ", end = '')
@@ -82,7 +82,7 @@ class Grid:
     def drawObscured(self) -> None:
         print("  ", end = '')
         for i in range(0, self.width):
-            print(string.ascii_lowercase[i]+" ", end = '')
+            print(str(i)+" ", end = '')
         print("\n", end = '')
         for i in range(0, self.height):
             print(str(i)+" ", end = '')
