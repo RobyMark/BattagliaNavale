@@ -70,7 +70,7 @@ def test_drawObscured(capsys) -> None:
     grid.cells[1][1] = "ship"
     grid.drawObscured()
     captured = capsys.readouterr()
-    assert captured.out == "  a b \n0 O X \n1 M O \n\n"
+    assert captured.out == "  0 1 \n0 O X \n1 M O \n\n"
 
 def test_drawRevealed(capsys) -> None:
     grid = Grid(2, 2)
@@ -79,4 +79,4 @@ def test_drawRevealed(capsys) -> None:
     grid.cells[1][1] = "ship"
     grid.drawRevealed()
     captured = capsys.readouterr()
-    assert captured.out == "  a b \n0 O X \n1 M B \n\n"
+    assert captured.out == "  0 1 \n0 O X \n1 M B \n\n"
