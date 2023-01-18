@@ -12,7 +12,7 @@ def main():
     user.placeShips(grid,4)
     while (grid.checkLenghtShip() != 0):
         user.userMove(grid)
-        ai.makeMove()
+        ai.makeMove(grid)
         
 
 if __name__ == "__main__":
