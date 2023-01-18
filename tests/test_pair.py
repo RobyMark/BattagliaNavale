@@ -9,6 +9,6 @@ def test_pairX() -> None:
     p = Pair(1, 5)
     assert p.getX() == 1
 
-def test_pairX() -> None:
+def test_pairY() -> None:
     p = Pair(1, 5)
     assert p.getY() == 5
