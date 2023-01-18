@@ -8,10 +8,12 @@ def main():
     grid = Grid()
     user = User()
     ai = AI()
-
-    ai.placeShips(grid)
-    
-
+    ai.placeShips(grid,4)
+    user.placeShips(grid,4)
+    while (grid.checkLenghtShip() != 0):
+        user.userMove(grid)
+        ai.makeMove()
+        
 
 if __name__ == "__main__":
     main()
