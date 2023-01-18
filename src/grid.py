@@ -120,3 +120,9 @@ class Grid:
             return "miss"
         self.cells[x][y]="miss"
         return "miss"
+
+
+    def checkLenghtShip (self) :
+        if (len(self.ships) == 0):
+            print("This is the end of the game")
+        
