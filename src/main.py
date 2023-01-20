@@ -29,6 +29,8 @@ def main():
         print("Enemy's last outcome: " + ai.lastOutcome)
         print("Your last move: " + str(user.lastMove.x) + ", " + str(user.lastMove.y))
         print("Your last outcome: " + user.lastOutcome)
+    print("GAME OVER")
+    return 0
 
 if __name__ == "__main__":
     main()
